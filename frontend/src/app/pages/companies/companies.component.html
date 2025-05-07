@@ -1,0 +1,69 @@
+<div class="max-w-5xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
+  <h2 class="text-2xl font-semibold mb-6 text-center">
+    {{ editingId ? 'Editar Compañía' : 'Registrar Nueva Compañía' }}
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Campos del formulario -->
+    <div *ngFor="let field of [
+      { name: 'name', label: 'Nombre' },
+      { name: 'sector', label: 'Sector' },
+      { name: 'phone', label: 'Teléfono' },
+      { name: 'address', label: 'Dirección' },
+      { name: 'city_id', label: 'Ciudad ID', type: 'number' },
+      { name: 'assets', label: 'Activos', type: 'number' },
+      { name: 'liabilities', label: 'Pasivos', type: 'number' }
+    ]">
+      <label class="block mb-1 font-medium">{{ field.label }}</label>
+      <input
+        [type]="field.type || 'text'"
+        [formControlName]="field.name"
+        class="w-full border rounded p-2"
+      />
+    </div>
+
+    <div class="md:col-span-2 flex justify-end gap-2 mt-4">
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        {{ editingId ? 'Actualizar' : 'Registrar' }}
+      </button>
+      <button type="button" (click)="cancelEdit()" *ngIf="editingId"
+              class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">
+        Cancelar
+      </button>
+    </div>
+  </form>
+
+  <!-- Tabla de compañías -->
+  <h2 class="text-xl font-semibold mt-10 mb-4">Listado de Compañías</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full border border-gray-200 text-sm text-left">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="p-2 border">ID</th>
+          <th class="p-2 border">Nombre</th>
+          <th class="p-2 border">Sector</th>
+          <th class="p-2 border">Ciudad ID</th>
+          <th class="p-2 border">Teléfono</th>
+          <th class="p-2 border">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies" class="hover:bg-gray-50">
+          <td class="p-2 border">{{ company.id }}</td>
+          <td class="p-2 border">{{ company.name }}</td>
+          <td class="p-2 border">{{ company.sector }}</td>
+          <td class="p-2 border">{{ company.city_id }}</td>
+          <td class="p-2 border">{{ company.phone }}</td>
+          <td class="p-2 border space-x-2">
+            <button (click)="edit(company)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+              Editar
+            </button>
+            <button (click)="delete(company.id)" class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

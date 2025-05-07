@@ -1,0 +1,22 @@
+database:
+  default: &default
+    adapter: postgresql
+    encoding: unicode
+    host: db
+    pool: 5
+    username: postgres  # Cambia 'user' a 'postgres'
+    password: password
+
+development:
+  <<: *default
+  database: app_development
+
+test:
+  <<: *default
+  database: app_test
+
+production:
+  <<: *default
+  database: app_production
+  username: app
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
