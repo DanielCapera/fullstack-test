@@ -28,3 +28,8 @@ docker-compose run backend rails db:create db:migrate
 ```bash
 docker-compose up
 ```
+### 5. Si la base de datos esta vacía, corre el siguiente seed para llenarla con algo de información.
+
+```bash
+docker-compose run backend rails db:seed
+```
