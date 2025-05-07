@@ -8,7 +8,7 @@ A continuacion se muestra el paso a paso para correr la aplicacion:
 ### 1. Clonar el repositorio
 
 ```bash
-git 
+git clone git@github.com:DanielCapera/fullstack-test.git
 cd fullstack-testab
 ```
 ### 2. Construir contenedores de docker
@@ -27,4 +27,9 @@ docker-compose run backend rails db:create db:migrate
 
 ```bash
 docker-compose up
+```
+### 5. Si la base de datos esta vacía, corre el siguiente seed para llenarla con algo de información.
+
+```bash
+docker-compose run backend rails db:seed
 ```
