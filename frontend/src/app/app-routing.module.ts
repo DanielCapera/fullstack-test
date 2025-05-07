@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard'; // Importa el guard
+import { AuthGuard } from './auth/auth.guard';
 
-import { DashboardComponent } from './dashboard/dashboard.component'; // El componente que quieres proteger
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard], // Protege esta ruta
+    canActivate: [AuthGuard],
   },
   {
     path: '',
