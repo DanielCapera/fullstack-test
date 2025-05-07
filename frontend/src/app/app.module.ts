@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms'; // <-- Importante
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,7 +16,6 @@ import { JWTInterceptor } from './auth.interceptor';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    // otros componentes
   ],
   imports: [
     BrowserModule,
